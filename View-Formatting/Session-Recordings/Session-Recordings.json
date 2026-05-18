@@ -1,0 +1,203 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/row-formatting.schema.json",
+  "hideSelection": true,
+  "hideColumnHeader": true,
+  "rowFormatter": {
+    "elmType": "div",
+    "attributes": {
+      "class": "ms-borderColor-neutralLight"
+    },
+    "style": {
+      "flex-direction": "column",
+      "align-items": "stretch",
+      "box-sizing": "border-box",
+      "border-width": "1px",
+      "border-left-width": "4px",
+      "border-style": "solid",
+      "border-left-color": "DarkBlue",
+      "margin-bottom": "10px",
+      "width": "75%",
+      "margin": "0 auto"
+    },
+    "children": [
+      {
+        "elmType": "div",
+        "style": {
+          "display": "flex",
+          "flex-wrap": "wrap",
+          "align-items": "center",
+          "box-sizing": "border-box",
+          "padding": "0 20px"
+        },
+        "children": [
+          {
+            "elmType": "div",
+            "style": {
+              "flex": "1 0 200px"
+            },
+            "children": [
+              {
+                "elmType": "div",
+                "children": [
+                  {
+                    "elmType": "a",
+                    "attributes": {
+                      "href": "[$FileRef]",
+                      "target": "_blank"
+                    },
+                    "style": {
+                      "line-height": "1.5em",
+                      "color": "#0067B8",
+                      "margin": "8px 0",
+                      "font-size": "20px",
+                      "font-weight": "600",
+                      "text-decoration": "underline"
+                    },
+                    "txtContent": "[$Title]"
+                  },
+                  {
+                    "elmType": "div",
+                    "attributes": {
+                      "class": "ms-font-m"
+                    },
+                    "style": {
+                      "line-height": "1.5em",
+                      "margin": "8px 0",
+                      "color": "#333",
+                      "white-space": "nowrap",
+                      "overflow": "hidden",
+                      "text-overflow": "ellipsis",
+                      "max-width": "100%"
+                    },
+                    "txtContent": "[$Summary]"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "elmType": "div",
+            "style": {
+              "display": "flex",
+              "flex-direction": "column",
+              "align-items": "flex-end",
+              "padding": "2px 8px"
+            },
+            "children": [
+              {
+                "elmType": "div",
+                "style": {
+                  "display": "flex",
+                  "flex-wrap": "wrap",
+                  "justify-content": "flex-end"
+                },
+                "children": [
+                  {
+                    "forEach": "Owner in [$SessionOwners]",
+                    "elmType": "img",
+                    "style": {
+                      "width": "90px",
+                      "height": "90px",
+                      "border-radius": "50%",
+                      "border": "1px solid",
+                      "margin": "2px"
+                    },
+                    "attributes": {
+                      "src": "=getUserImage([$Owner.email], 'L')",
+                      "title": "[$Owner.title]"
+                    }
+                  }
+                ]
+              },
+              {
+                "elmType": "div",
+                "style": {
+                  "display": "flex",
+                  "flex-wrap": "wrap",
+                  "justify-content": "flex-end",
+                  "margin-top": "4px"
+                },
+                "children": [
+                  {
+                    "forEach": "Owner in [$SessionOwners]",
+                    "elmType": "span",
+                    "style": {
+                      "margin": "=if(length([$SessionOwners]) > 1, '0 3px 3px 0', '0 4px 4px 0')",
+                      "padding": "=if(length([$SessionOwners]) > 1, '1px 5px', '2px 8px')",
+                      "border-radius": "10px",
+                      "border": "0px solid",
+                      "display": "inline-block",
+                      "font-size": "=if(length([$SessionOwners]) > 1, '12px', '13px')",
+                      "text-align": "right"
+                    },
+                    "txtContent": "[$Owner.title]"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "elmType": "div",
+        "attributes": {
+          "class": "ms-fontSize-sPlus ms-bgColor-neutralLighter"
+        },
+        "style": {
+          "padding": "4px 20px",
+          "line-height": "1.5em",
+          "display": "flex",
+          "justify-content": "space-between"
+        },
+        "children": [
+          {
+            "elmType": "div",
+            "children": [
+              {
+                "elmType": "span",
+                "txtContent": "Event Name: "
+              },
+              {
+                "elmType": "span",
+                "txtContent": "[$EventName]"
+              }
+            ]
+          },
+          {
+            "elmType": "div",
+            "style": {
+              "margin": "0 10px"
+            },
+            "children": [
+              {
+                "elmType": "span",
+                "txtContent": "Breakout Session: "
+              },
+              {
+                "elmType": "span",
+                "style": {
+                  "display": "inline-block"
+                },
+                "txtContent": "[$SessionNumber]"
+              }
+            ]
+          },
+          {
+            "elmType": "a",
+            "attributes": {
+              "href": "[$DeckLink]",
+              "target": "_blank"
+            },
+            "style": {
+              "display": "inline-block",
+              "text-transform": "capitalize",
+              "color": "#0078d4",
+              "text-decoration": "none"
+            },
+            "txtContent": "[$DeckLink.desc]"
+          }
+        ]
+      }
+    ]
+  }
+}
