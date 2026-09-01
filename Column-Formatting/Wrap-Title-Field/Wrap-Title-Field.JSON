@@ -1,1 +1,21 @@
-
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v2/column-formatting.schema.json",
+  "elmType": "div",
+  "style": {
+    "white-space": "normal",
+    "word-break": "break-word",
+    "overflow": "visible",
+    "cursor": "pointer",
+    "color": "#000000",
+    "text-decoration": "none",
+    "font-weight": "600",
+    "padding": "4px 0"
+  },
+  "attributes": {
+    "title": "=@currentField"
+  },
+  "customRowAction": {
+    "action": "editProps"
+  },
+  "txtContent": "=@currentField"
+}
